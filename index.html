@@ -14,7 +14,6 @@
     }
     hr {
      color: white;
-     
      margin-top: 1px;
      margin-bottom: 10px;
      border-radius: 30px;
@@ -23,6 +22,7 @@
     .calculator {
       background: #000000;
       padding: 20px;
+      height: 460px;
       width: 260px;
       border-radius: 15px;
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.61);
@@ -62,9 +62,14 @@
       color: rgba(19, 167, 0, 0.808);
     }
     .equal {
-      background: #43a047;
-      color: white;
-    
+      background: #128318;
+      color: rgb(255, 255, 255);
+      width:128px ;
+      border-radius:30px;
+      height: 55px;
+    }
+    .equal:hover{
+    background: rgb(0, 192, 0);
     }
     .clear {
       background: #242424;
@@ -79,7 +84,7 @@
   <hr color="white">
   <div class="buttons">
     <button onclick="clearDisplay()" class="clear">C</button>
-     <button onclick="clearDisplay()" class="clear">CE</button>
+    <button onclick="clearDigit()" class="clear">CE</button>
     <button onclick="appendValue('(')">(</button>
     <button onclick="appendValue(')')">)</button>
 
@@ -95,21 +100,19 @@
 
     <button onclick="appendValue('/')" class="operator">÷</button>
     
-    
-
-    <button onclick="appendValue('4')">4</button>
-    <button onclick="appendValue('5')">5</button>
-    <button onclick="appendValue('6')">6</button>
-    <button onclick="appendValue('-')" class="operator">−</button>
-
     <button onclick="appendValue('1')">1</button>
     <button onclick="appendValue('2')">2</button>
     <button onclick="appendValue('3')">3</button>
-    <button onclick="appendValue('+')" class="operator">+</button>
+
+    <button onclick="appendValue('-')" class="operator">−</button>
 
     <button onclick="appendValue('0')">0</button>
     <button onclick="appendValue('.')">.</button>
     <button onclick="appendValue('00')">.00</button>
+
+    <button onclick="appendValue('+')" class="operator">+</button>
+
+    
     <button onclick="calculate()" class="equal">=</button>
   </div>
 </div>
@@ -123,6 +126,9 @@
 
   function clearDisplay() {
     display.value = '';
+  }
+  function clearDigit() {
+  display.value = display.value.toString().slice(0,-1)
   }
 
   function calculate() {
